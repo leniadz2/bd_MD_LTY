@@ -106,4 +106,14 @@ AS
     AND OBJTNM = @objtnm
     AND FECHOR = @strgFT;
 
+  EXEC bds.sp_lty_transaccion;
+
+  SET @strgTim = REPLACE(CONVERT(VARCHAR, GETDATE(), 108), ':', '');
+
+  UPDATE ctl.CONTROL
+    SET S_FLD7 = @strgTim
+  WHERE PRCESO = @prceso
+    AND OBJTNM = @objtnm
+    AND FECHOR = @strgFT;
+
 GO
